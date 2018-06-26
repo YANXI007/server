@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2></h2>
+    <input type="button" id="btn" value="点我">
+    <script src="js/jquery.js"></script>
+    <script>
+        // 给按钮绑定单击事件
+        $("#btn").click(function() {
+            // 点按钮之后发ajax请求 get方式
+             /*$.get("1.json",{"id":4,"name":"李伟"},function(data) {
+                 console.log(data);
+                console.log(typeof data); //object
+            });*/
+            /*$.get("1.json?id=4&name=阿伟",function(data) {
+                console.log(data);
+            });*/
+
+             /*$.post("1.json",{"id":5,"name":"lucy"},function(data) {
+                console.log(data);
+            });*/
+            $.ajax("1.json?x="+Math.random(),{
+                // 请求类型
+                "type":"get",
+                // 传到服务器上的数据
+                "data": {
+                    "name":"xiaohong",
+                    "age":22
+                },
+                // 成功要做的事
+                "success":function(data) {
+                    console.log(data);
+                },
+                "error":function(XMLHttpRequest,textStatus,errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
+
+        });
+    </script>
+    <script>
+        $("#btn").click(function(){
+           $.ajax({
+               type:"get",
+               url:"1.jsonx="+Math.random(),
+               data:{
+                    "name":"小小",
+                   "age":22
+               },
+               success:function(data){
+                    console.log(data);
+               },
+               error:function (XMLHttpRequest,textStatus,errorThrown) {
+                   console.log(errorThrown);
+               }
+           });
+        });
+    </script>
+</body>
+</html>

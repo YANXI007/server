@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="myajax.js" ></script>
+</head>
+<body>
+    <div>
+                ############
+    </div>
+    <button id="btn">单击异步获取文件</button>
+    <script>
+        myajax.get("php/do3.php",{
+            "name":"along",
+            "age":18
+        },function(error,data) {
+           console.log(data);
+        });
+    </script>
+    <!--<script>
+        var jsonObj1 = {name:"zs",age:12};
+        var jsonObj2 = {"name":"zs","age":12};
+        var str1 = JSON.stringify(jsonObj1);
+        var str2 = JSON.stringify(jsonObj2);
+        console.log(str1);//{"name":"zs","age":12};
+        console.log(str2);//{"name":"zs","age":12};
+        var json1 = JSON.parse(str1);
+        var json2 = JSON.parse(str2);
+        console.log(json1);//{name:"zs",age:12};
+        console.log(json2);//{name:"zs",age:12};
+    </script>-->
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+       ############
+    </div>
+    <button id="btn">单击异步获取文件</button>
+    <script>
+         // 得到元素
+         var btn = document.getElementById("btn");
+         var div1 = document.getElementsByTagName("div")[0];
+         // 注册事件
+         btn.onclick = function() {
+              // 发ajax请求
+              // S1 创建xhr对象      
+              var xhr;
+              if(window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+              } else {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+              }
+              // S2 这个事件在xhr对象就绪状态改变时候触发
+                 xhr.onreadystatechange = function() {
+                    console.log(xhr.readyState);  
+                     if(xhr.readyState==4) {
+                         // 接受文件完毕后要做的事情
+                         div1.innerHTML = xhr.responseText;
+                     }
+                 }
+
+                // console.log(xhr.readyState); // 0 open()未调用之前的
+              // S3 
+              xhr.open("post","php/do2.php",true);
+             // console.log(xhr.readyState); // 1 open()被调用
+              // 假如用post请求，必须写一句 模拟成表单处理
+              xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+              // S4  "k=v&k=v&k=v"
+              xhr.send("age=18&name=zhangsan");
+
+              
+         }
+    </script>
+</body>
+</html>

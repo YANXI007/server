@@ -1,0 +1,74 @@
+AJax
+正式进入"全栈" 前端+后端
+大前端 前端+后端（少量的php、nodejs）
+
+"前端"  web ios/andriod 
+"后端"  php java python nodejs ...
+
+一个网站涉及前端和后端，前后台经常需要数据通信，可以借助ajax技术
+
+
+服务器相关知识
+
+1 服务器 
+    它就是一台电脑,性能非常好、需要很安全
+2 服务器能做啥事？
+    当用户点击地址栏，它向服务器发起一个http请求，服务器收到该请求做出响应（response）
+
+    * 当用户在地址栏中输入域名按回车后，发生了什么事情？
+      a  浏览器先DNS上获取服务器的IP地址  
+      b  浏览器向服务器发一个http请求（get/post）上行请求（request）
+      c  服务器会接受到http请求并做出响应（response）
+      d  浏览器解析数据，渲染代码呈现在我们眼前
+
+                       Request
+      Client(浏览器) --------------- >Server(服务器)   
+                     <--------------
+                        Response  
+
+3 前端语言和后台语言的区别
+    学后台为了面试加分，你学了后台对前端的认识更深刻
+    2014之前 前后端嵌套
+    2014年之后  后台工程师主要写接口（提供数据来源 json或xml）
+               前端工程师 界面的搭建+UI的美化 调接口
+
+4 php入门体验
+
+    php   
+
+    * 安装php环境
+        phpnow 集成环境 （php+apache+mysql） 
+
+    *  书写第一个php程序
+
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>今天 我非常高兴，买了一部iphone<?php echo 7 ?></h1>
+</body>
+</html>     
+
+我们直接把php文件拖到浏览器中运行是不行的，需要安装php环境，php安装在
+服务器上，我们后面会把自己的电脑当作服务器（只要我们自己电脑上装了网页服务器软件就行）     
+
+记住 php执行在服务器端，服务器执行完毕把结果发给客户端浏览器
+
+
+客户端输入一个地址 localhost/01.php ,服务器开始解析01.php,组装成一个网页，发给浏览器，浏览器
+拿到网页肯定认识，进行渲染
+
+  
+
+
+
+
+
+
+
+

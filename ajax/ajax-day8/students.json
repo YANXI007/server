@@ -1,0 +1,18 @@
+{
+    "students":[{
+        "xuehao":100001,
+        "xingming":"zs",
+        "age":22,
+        "score":78
+    },{
+        "xuehao":100002,
+        "xingming":"wh",
+        "age":22,
+        "score":78
+    },{
+        "xuehao":100003,
+        "xingming":"zn",
+        "age":22,
+        "score":78
+    }]
+}

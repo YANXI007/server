@@ -1,0 +1,46 @@
+# 复习
+   基础语法 php操作数据库 参考01.php 02.php
+# get请求和post请求  
+   
+   ## get请求和post请求
+        js程序让用户输入信息 
+            prompt("提示文字")
+            文本框  通过js程序读取文本框值
+        服务器来得到用户的数据
+
+               get
+        B  --------------------> S   
+
+        GET请求是用URL传递数据 
+               http://www.baidu.com/s?k=v&k=v&k=v  
+        PHP获取GET请求任何部分的值 $_GET["age"]  
+     总结 GET请求缺点 1 数据不安全,数据暴露在url地址栏 
+                     2 数据内容不能太大 GET请求限制数据大小
+                优点  便于分享网址
+
+# 数据库插入数据
+   查询
+     SELECT * FROM 表名
+     SELECT * FROM 表名 where age>=18
+
+   插入数据
+      INSERT INTO 
+             student(xingming,xuehao,tel,age) VALUES('jack','10005','15673646',24)   
+      INSERT INTO biaom(字段1,字段2,...) VALUES(值1,值2...)
+
+# POST请求
+     POST请求提交数据不是利用URL,利用的是HTTP request的请求报文
+
+     用表单来产生POST请求
+
+
+     总结POST请求的优点 1 安全 不会暴露在url地址中
+                       2 数据大小理论上不限制 
+            缺点 地址不可以分享 
+
+      一般POST请求用于表单提交,get请求查找数据库中的某一个条目  ?xuehao=10004    
+
+
+
+
+

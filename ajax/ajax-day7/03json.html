@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="myajax.js"></script>
+    <script>
+         myajax.get("php/1.json",{},function(err,data) {
+            //console.log(typeof data);//string
+            if(err) return;
+
+            // 把返回的string类型的数据转成json格式
+            // eval()
+            var str = "alert(10+20)";
+            eval(str); //把字符串当js语句执行 30
+
+            //方法一 eval奇淫技巧
+           var json = eval( "("+data+")");
+           console.log(json);
+           console.log(typeof json);//object
+
+          // 方法2 new Function
+          /* 
+             function fun() {}
+
+         var fn = new Function("for(var i=1; i<=100; i++) {console.log(i);}");
+         fn();
+        
+         var data = new Function("return"+data)();
+         console.log(typeof data);//object
+         });   */
+         
+         // 方法3  JSON.parse()  字符串--->json
+         //        JSON.stringify() json--->字符串
+         var data = JSON.parse(data);
+         console.log(data.res[1].name);
+         console.log(typeof data);//object
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <button id="btn">单击异步获取文件</button>
+        <script>
+              // 得到元素
+         var btn = document.getElementById("btn");
+         btn.onclick = function() {
+               var xhr = new XMLHttpRequest();
+               xhr.onreadystatechange = function() {
+                   if(xhr.readyState==4) {
+                       console.log(xhr.responseText);
+                   }
+               }
+
+               xhr.open("get","data/1.txt",true);
+               xhr.send(null);
+
+               console.log("hahahaha");
+               console.log("hahahaha");
+               console.log("hahahaha");
+         }
+        </script>    
+</body>
+</html>  

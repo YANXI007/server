@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2></h2>
+    <ul>
+    </ul>
+    <input type="button" id="btn" value="点我">
+    <script src="js/jquery.js"></script>
+    <script>
+        // 给按钮绑定单击事件
+        $("#btn").click(function() {
+            $.post("1.json",{"id":5,"name":"lucy"},function(data) {
+                console.log(data);
+                for(var i=0; i<data.content.length; i++) {
+                    var $li = $("<li></li>");
+                    $li.html(data.content[i].id+":"+data.content[i].name);
+                    $("ul").append($li); 
+                }
+            });      
+        });
+    </script>
+
+</body>
+</html>

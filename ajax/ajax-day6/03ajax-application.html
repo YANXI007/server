@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>失败</title>
+    <style>
+        #info {
+             width: 300px;
+             display: none;
+        }
+        .wrong {
+            background-color: yellow;
+            color: red;
+        }
+
+        .right {
+            background-color: skyblue;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <p>请输入用户名<input type="text" name="" id="userName"></p>
+    <div id="info"></div>
+    <script>
+        // 得到相关元素
+        var userName = document.getElementById("userName");
+        var info = document.getElementById("info");
+       // 注册失去焦点事件
+       userName.onblur = function() {
+           // 发ajax请求
+           // 获取用户输入的用户名
+           var txt = userName.value;
+           // ajax模板
+           // 创建xhr对象
+           var xhr = new XMLHttpRequest();
+           // 注册事件
+           xhr.onreadystatechange = function() {
+               if(xhr.readyState==4) {
+                   info.style.display = "block";
+                   console.log(xhr.responseText);
+                   if(xhr.responseText == "yes") {
+                       info.innerHTML = "恭喜你，用户名正确";
+                       info.className = "right";
+                   } else {
+                       info.innerHTML = "用户名输入错误";
+                       info.className = "wrong";
+                   }
+               }
+           }
+           // 配置请求
+           xhr.open("get","php/check.php?userName="+txt,true);
+           // 发送请求
+           xhr.send(null);
+       }
+
+       userName.onfocus = function() {
+           info.style.display = "none";
+       }
+    </script>
+</body>
+</html>

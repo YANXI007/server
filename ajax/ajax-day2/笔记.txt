@@ -1,0 +1,101 @@
+ajax课程
+一 PHP初步认知
+     PHP是服务器语言，除了PHP还有JAVA、Python、.net等
+     PHP是一个内嵌在html的语言,需要运行环境，不能直接在浏览中运行
+
+     phpnow解压到c:\  找到Setup.cmd 以 管理员身份 运行
+        数据库密码 123456
+
+    phpnow (apache+mysql+php解析器)   
+
+   *  Apache 服务器软件 免费开源  别人访问我们这台机器 其实访问的是根目录c:\phpnow\htdocs
+
+
+    * php引擎  运行php程序
+
+       localhost/ajax-day2  
+
+    * mysql 管理数据   
+
+二 前后台语言的比较
+     php    Hypertext Preprocessor
+
+
+
+     客户端                      服务器
+
+     1 输入网址  http://localhost/ajax-day2/01.php  发请求
+     2 服务器接受到请求，命令php解析引擎工作，执行01.php,把<?php ... ?>在服务器上执行完毕
+     会压平为html传输给客户端（传输过程叫响应）
+     3 浏览器得到一段html+css+js可识别的代码 可是渲染
+
+     所有html、css、js前台脚本，是在客户端浏览器中执行
+     php、jsp、asp都是在服务器端运行 叫后台运行，任何后台语言都需要一个环境
+
+    
+     js运行在客户端,负责页面样式、动画、交互、事件、表单验证等
+     php运行在服务器，主要负责数据的增删改查等
+
+三 php语法基本介绍
+   3.1 php书写位置
+      <?php   ?>  可以出现在任何位置 
+
+      php文件需要运行在服务器环境，在浏览器中输入localhost/ajax-day2/01.php
+
+   3.2 echo语句
+         php语句要求末尾加分号
+
+         echo  "...."   
+
+   3.3 变量及其作用域  ----- 02.php
+        以$开头，后面变量名称  .相当于连接符
+        变量命名规则        
+        <?php
+      $a = 10;
+      $b = "hello world";
+      $c = true;
+      echo $a."<br />";
+      echo $b."<br />";
+      echo $c;
+       ?>
+
+
+       php作用域没有块级作用域
+
+  3.4  运算符  -----03.php
+        基本等同于js 注意连字符不一样，在php中是. 
+
+  3.5 数组 ------04.php
+
+     <ul>
+    <li><?echo $a[0]; ?></li>
+    <li><?echo $a[1]; ?></li>
+    <li><?echo $a[2]; ?></li>
+    <li><?echo $a[3]; ?></li>
+</ul>
+
+可以这样写 
+   <ul>
+   <?php
+      for($i=0; $i<count($a); $i++) {
+          echo "<li>".$a[$i]."</li>";
+      }
+   ?>
+</ul>
+
+3.6 php语句 
+     if  if-else  for while do-while 一模一样
+
+3.7 函数
+      函数在php中没有函数声明提升,在php中必须先定义函数 后使用函数
+      函数调用方式  函数名();
+      函数的返回值和传参与js一致
+
+// 小题目 
+// 输出20组  h1~h6 嘿嘿   
+
+// 练习 
+// 隔行变色 20行 135行 红色 024行 绿 
+
+
+                 

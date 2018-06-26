@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax缓存问题</title>
+</head>
+<body>
+    <h2></h2>
+    <input type="button" id="btn" value="点我">
+    <script src="js/jquery.js"></script>
+    <script>
+
+        $("#btn").click(function() {
+              // 给按钮绑定单击事件
+        $.ajax("1.json?x="+Date.parse(new Date()),{
+                // 请求类型
+                "type":"get",
+                // 传到服务器上的数据
+                "data": {
+                    "name":"xiaohong",
+                    "age":22
+                },
+                // 成功要做的事
+                "success":function(data) {
+                    console.log(data.content[1].name);
+                },
+                "error":function(XMLHttpRequest,textStatus,errorThrown) {
+                    console.log(errorThrown);
+                }
+            });
+        });
+      
+ 
+    </script>
+</body>
+</html>

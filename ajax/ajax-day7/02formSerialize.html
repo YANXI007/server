@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <form action="" id="biaodan">
+      <p>
+          <label>请输入姓名
+            <input type="text" name="userName"/>
+          </label>
+      </p> 
+      <p>
+            <label>请输入密码
+              <input type="password" name="psw"/>
+            </label>
+        </p> 
+      <p>
+            请选择性别
+              <input type="radio" name="gender" value="男"/>男
+              <input type="radio" name="gender" value="女"/>女
+         
+        </p> 
+        <p>
+                请选择你的爱好
+                  <input type="checkbox" name="hobby" value="足球"/>足球
+                  <input type="checkbox" name="hobby" value="篮球"/>篮球
+                  <input type="checkbox" name="hobby" value="打豆豆"/>打豆豆
+                  <input type="checkbox" name="hobby" value="编程"/>编程
+             
+        </p> 
+        <p>
+            请选择你所在省份
+            <select name="prov" id="prov">
+                <option value="江苏">江苏</option>
+                <option value="广东">广东</option>
+                <option value="湖南">湖南</option>
+            </select>
+        </p>
+        <p>
+            请谈谈你的建议
+            <textarea name="message" id="" cols="30" rows="10"></textarea>
+        </p>
+        <p>
+            <input type="button" value="点击提交" id="btn"/>
+        </p>
+   </form>
+   <!--<script>
+       var btn = document.getElementById("btn");
+       var prov = document.getElementById("prov");
+       var prov = document.getElementById("prov");
+       btn.onclick = function () {
+            console.log(prov.value);
+
+       }
+   </script>-->
+   <script>
+        // 找到相关元素
+        var biaodan = document.getElementById("biaodan");
+        var btn = document.getElementById("btn");
+        // 注册事件
+        btn.onclick  = function() {
+            // 获取所有表单控件
+            var eles = biaodan.elements;
+            //console.log(eles.length);
+            //console.log(eles[0].value);
+            var res = [];  // k=v&k=v&k=v
+            // 循环遍历所有的表单控件
+            for(var i=0; i<eles.length; i++) {
+                var ele = eles[i];
+                //console.log(ele.type);
+                switch(ele.type) {
+                    case "button":
+                    case "submit":
+                    case "reset":
+                             break;
+                    case "text":
+                    case "password": 
+                    case "textarea": 
+                       res.push(ele.name+"="+ele.value);
+                       break;
+                    case "radio": 
+                    case "checkbox": 
+                       ele.checked&&res.push(ele.name+"="+ele.value); 
+                       break;
+                    case "select-one":
+                         var options = ele.getElementsByTagName("option");     
+                         for(var j=0; j<options.length; j++) {
+                             options[j].selected&&res.push(ele.name+"="+options[j].value);
+                         }
+                }
+            }
+
+            console.log(res);//["userName=111", "psw=111", "gender=女", "hobby=足球", "hobby=编程", "prov=广东", "message=啊啊啊"]
+            console.log(typeof res);//object
+            res = res.join("&");
+            console.log(res);//userName=lucy&psw=66666&gender=女&hobby=足球&hobby=打豆豆&hobby=编程&prov=广东&message=11223
+            console.log(typeof res);//string
+
+        }
+   </script>
+</body>
+</html>

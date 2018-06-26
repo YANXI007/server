@@ -1,0 +1,106 @@
+AJAX
+1 关于HTTP
+   超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议
+
+   HTTP传输，不是一个文件整体传输，把一个大文件分成一个个报文进行传输，浏览器
+   渲染页面的时候一块一块加载，图片一条一条现实
+
+   HTTP无连接的
+
+   FTP 文件上传协议 File Tranfer Protocal,持续连接的
+
+   "上网" 输入网址,浏览器发出HTTP请求，请求服务器的资源文件，服务器的文件
+   通过HTTP传输到本地，由浏览器进行渲染
+ 
+           Request
+      B  ------------> S
+         <-----------
+            Response
+
+
+  浏览器产生请求，可能是输入了新网址或点了一次超链接等，使页面跳转，会导致
+  页面全局刷新，Ajax技术可以让网页静悄悄发起HTTP请求，请求回来的数据在页面
+  局部刷新        
+
+二  欣赏ajax技术的网站
+      ajax技术 涉及三要素 1  带着数据偷偷上到服务器  2 服务器传回json
+                         3 组建DOM，更新页面
+
+
+              ajax请求
+      浏览器  ------------>  服务器                    
+             <------------
+                json
+    前端工程师  * 书写ajax程序，准备发送带参数的HTTP请求
+               *  对接受的JSON数据进行解析，利用DOM技术呈递页面
+    后端工程师  识别前端的HTTP请求中的参数，查询数据库，发送JSON数据
+
+三 Ajax技术实现               
+      Asynchronous javascript and xml 异步的Javascript和xml
+
+      XML语法和HTML比较类似 
+
+       <articles>
+            <article>
+                 <title>....</title>
+                 <author>....</author>
+            </article> 
+             <article>
+                 <title>....</title>
+                 <author>....</author>
+            </article> 
+       </articles> 
+
+
+       {
+           "data":[
+               {
+                   "title":....,
+                   "author":....
+               },
+               {}
+           ]
+       }
+
+书写ajax之Helloworld
+   代码见01ajax.html   
+
+   * XHR对象 
+       var xhr = new XMLHttpRequest(); IE6不兼容
+       兼容处理 能力检测
+
+    * open方法
+        xhr.open("get","data/1.txt",true);
+        open() 没有真正发送请求 
+         第一个参数 表示请求方式  get或post  
+         第二个参数 处理这个请求的路径 
+         第三个参数 表示是否异步处理  一定是true 
+
+         关于异步 定时器 ajax 事件回调函数
+
+     * send() 方法
+         发送请求
+          get方式  send(null)
+          post方式  xhr.send("age=20&name=zs"); 
+
+     * encodeURIComponent()
+          为了传输中文到服务器上会乱码，前端需要用encodeURIComponent()进行处理
+
+          get请求或post请求假如要用中文，一般把中文转为URI标准字符
+
+      onreadystatechange 事件 
+
+            xhr.readyState属性一旦改变 该事件就触发，我们只关心readyState属性值为4的状态          
+
+      状态码
+         每次http请求都有状态码 status
+
+         200 ok 成功
+         304 not modified 文件未改变
+         404 not found
+
+四  原生ajax封装           
+
+      
+           
+        

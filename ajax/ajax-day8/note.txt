@@ -1,0 +1,43 @@
+jquery中的ajax
+
+1  get()方法
+
+    $.get(URL,callback);
+
+    底层做了一些事 
+        1.1  encodingURIComponent()处理中文
+        2.1  假如请求是404等错误状态,不会执行回调函数
+        3.1  jquery识别传回来的数据，帮我们转JSON了
+2 post()
+    $.post("1.json",{"id":5,"name":"lucy"},function(data) {
+                console.log(data);
+            });
+
+3 ajax() 
+
+4 jquery处理表单序列化   
+
+
+5 Ajax缓存问题
+   Ajax存在严重缓存,假如两次get请求，都是往一个URL,并且携带的参数
+   一样，即使服务器返回200状态码，也会被当304那样缓存
+   有的浏览器默认处理了缓存，有的浏览器没有做缓存处理
+
+   解决方案------只要更改参数 就不会有缓存
+      随机数 
+      时间戳  
+         Date  new Date()
+
+         Date.parse(new Date()) 
+
+6 模板引擎原理
+    拼接字符有时候很繁琐，容易出错
+
+    模板引擎 在完整的字符串中，用特殊语法表示未定的量
+
+    
+
+
+   
+            
+
