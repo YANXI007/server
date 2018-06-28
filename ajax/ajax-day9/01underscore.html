@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <div></div>
+   <script src="js/underscore.js"></script>
+   <script>
+       var arr = [123,45,33,56,34,333,65,333,2222,345,67,0];
+      /*  var max = _.max(arr);
+       var min = _.min(arr);
+       alert(max);
+       alert(min); */
+       _.each(arr,function(item) {
+           console.log(item);
+       });
+         
+       // map返回的是与原数组对应的新数组，每循环到一个元素时，就会
+       //调用第二个函数,将第二个函数的返回值做为新数组当前这项的值
+     /*  var resArr =  _.map(arr,function(item) {
+           return item+10;
+       });
+       console.log(arr);
+       console.dir(resArr); */
+       console.log(_.shuffle(arr)); // 所有元素随机打乱
+       console.log(_.sample(arr,4));
+       
+       
+       console.log(_.without(arr,333));
+       console.log(_.invoke([[1,8,70,5]], 'sort',function(a,b) {return a-b;}));
+   </script>
+</body>
+</html>

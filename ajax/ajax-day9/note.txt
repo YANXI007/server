@@ -1,0 +1,25 @@
+underscore.js
+1  我们之前学过jquery,主要的目的是为了简化DOM操作，jquery是
+DOM编程界的霸主。
+
+2 underscore.js
+   文档http://www.css88.com/doc/underscore/
+   Underscore一个JavaScript实用库，提供了一整套函数式编程的实用功能，但是没有扩展任何JavaScript内置对象
+   underscore没有限制使用场景,比如我们node.js开发可以用它。underscore封装
+   一堆很实用的函数，主要针对数组、函数、对象等
+
+   讲解部分相关api
+
+
+3 ajax跨越
+   Ajax不支持跨域
+
+   比如你的服务器www.qq.com,你不能请求www.taobao.com,但是你可以
+   请求www.qq.com/1.txt  music.qq.com/1.mp3 
+
+   为安全考虑，对于所有后台语言服务器程序来说，所有xhr类型的请求，
+   来自其他服务器，将不予应答
+
+
+   2008年之前，无法用XMLHttpRequest对象请求其他服务器的内容，2008年
+   用jsonp实现跨域  

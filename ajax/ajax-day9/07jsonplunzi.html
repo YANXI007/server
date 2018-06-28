@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        jsonp("jsonp.txt","fun",function(data) {
+           console.log(data);
+        });
+        // 编写一个轮子 以后进行jsonp进比较方便
+        function jsonp(URL,callbackname,callback) {
+             window[callbackname] = callback;
+             // 创建script元素
+             var oScript = document.createElement("script");
+            // 添加节点
+             document.body.appendChild(oScript);
+            oScript.src= URL;
+            // 删除
+            document.body.removeChild(oScript);
+        }
+    </script>
+</body>
+</html>

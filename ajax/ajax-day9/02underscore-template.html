@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <div></div>
+   <script src="js/underscore.js"></script>
+   <script>
+       // 模板字符串
+       var templateStr = "今天，非常<%= mood%>,买了一台<%= computer%>,花了<%= money%>元"
+       // 字典
+       var dictionary = {
+           "mood":"happy",
+           "computer":"mbp",
+           "money":12800
+       };
+       // 根据模板字符串生成一个数据绑定函数
+       var compile = _.template(templateStr);
+       var resStr = compile(dictionary);
+       console.log(resStr);
+
+  </script>
+</body>
+</html>

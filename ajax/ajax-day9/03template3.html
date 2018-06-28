@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table,tr,td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <table id="tb">
+        <tr>
+            <td>学号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>成绩</td>
+        </tr>
+        
+        <!-- <tr>
+            <td>100001</td>
+            <td>周芷若</td>
+            <td>24</td>
+            <td>87</td>
+        </tr> -->
+        <!-- <tr>
+                <td>100002</td>
+                <td>张无忌</td>
+                <td>26</td>
+                <td>99</td>
+        </tr> -->
+    </table>
+    <script type="text/template" id="template">
+        <tr>
+            <td><%=xuehao%></td>
+            <td><%=xingming%></td>
+            <td><%=age%></td>
+            <td><%=score%></td>
+        </tr>
+    </script>
+    <script src="js/underscore.js"></script>
+    <script src="js/jquery.js"></script>
+    <script>
+        // 1 模板字符串
+         var str = $("#template").html();
+         // 2 根据模板字符串生成数据绑定函数
+         var compile = _.template(str);
+         // 拿到数据
+         $.get("students.json",function(data) {
+            /*  for(var i=0; i<data.students.length; i++) {
+                 var student = data.students[i];
+                 //console.log(student);
+                 var DOMString = compile(str,student);
+                 // 追加到表格末尾
+                 $("#tb").append(DOMString);
+
+             } */
+             _.each(data.students,function(dictionary) {
+                   var domStr = compile(dictionary); 
+                   // 追加到表格末尾
+                 $("#tb").append(domStr);
+             });
+         });
+
+         
+        
+    </script>
+</body>
+</html>
