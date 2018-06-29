@@ -23,3 +23,13 @@ DOM编程界的霸主。
 
    2008年之前，无法用XMLHttpRequest对象请求其他服务器的内容，2008年
    用jsonp实现跨域  
+
+
+*******************************************************
+    //js获取最大值 top
+   console.log(Math.max(1,2,3));//3
+   var arr1 = [1, 2, 4];
+
+   var max1 = Math.max.apply(Math,arr1);
+   console.log(max1);//4
+   //js获取最大值 end

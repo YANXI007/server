@@ -10,6 +10,15 @@
    <div></div>
    <script src="js/underscore.js"></script>
    <script>
+       //js获取最大值 top
+       console.log(Math.max(1,2,3));
+       var arr1 = [1, 2, 4];
+       /*var max = Math.max(...arr);
+        console.log(max);*/
+       var max1 = Math.max.apply(Math,arr1);
+       console.log(max1);
+       //js获取最大值 end
+
        var arr = [123,45,33,56,34,333,65,333,2222,345,67,0];
       /*  var max = _.max(arr);
        var min = _.min(arr);
@@ -30,7 +39,7 @@
        console.log(_.sample(arr,4));
        
        
-       console.log(_.without(arr,333));
+       console.log(_.without(arr,333));//返回删除 333 元素的新数组
        console.log(_.invoke([[1,8,70,5]], 'sort',function(a,b) {return a-b;}));
    </script>
 </body>
