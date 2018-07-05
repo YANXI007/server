@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        body {
+            background-color: #ccc;
+        }
+
+        .waterfall {
+            width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .grid {
+            width: 240px;
+            position: absolute;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 15px;
+           
+        }
+
+        .grid img {
+            width: 240px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="waterfall">
+        <div class="grid">
+            <img src="images/0.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/1.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/2.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/3.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/4.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/5.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/6.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/7.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/8.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/9.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/10.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/11.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/9.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/12.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/11.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/9.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/12.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/11.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script>
+         // 1得到所有的grid
+         var $grids = $(".grid");
+         // 2 循环去设置位置
+         $grids.each(function() {
+             //
+             var sum = 0;
+             for(var i=$(this).index()-3;i>=0; i-=3) {
+                 sum += $grids.eq(i).outerHeight()+20
+             }
+             $(this).css({
+                 "left": ($(this).index()%3)*270,
+                 "top": sum
+             });
+         });
+
+
+         //  0  1  2 $(this).index()   top :全部 0  left: 0  280 560
+         //  3  4  5  index%3  top 上面人的总高度  left 0 280 560
+         //  6  7  8
+         //  9  10 11
+
+         // 对所有的grid top都是它对应上面所有人的高度
+         // ..........
+    </script>
+
+</body>
+
+</html>

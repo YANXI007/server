@@ -1,0 +1,63 @@
+jsonp原理
+
+1  页面上定义一个函数
+     function fn(data) {
+         // data
+     } 
+
+    <script src="地址" ></script>
+     fn(data);
+
+
+    fn(json);// 函数调用语句
+
+2  jsonp 
+
+    jsonp("jsonp.txt","fun",function(data) {
+           console.log(data);
+        });
+        // 编写一个轮子 以后进行jsonp进比较方便
+        function jsonp(URL,callbackname,callback) {
+             window[callbackname] = callback;
+             // 创建script元素
+             var oScript = document.createElement("script");
+            // 添加节点
+             document.body.appendChild(oScript);
+            oScript.src= URL;
+            // 删除
+            document.body.removeChild(oScript);
+            // 删除全局函数
+            delete window[callbackname];
+        }
+    </script>  
+
+  3 jquery中的jsonp
+      $.ajax({
+          "dataType":"jsonp",
+          "url":"地址",
+          "jsonpCallback":"fun",
+          "success":function(data) {
+
+          }
+
+      });   
+
+
+      如何实现跨域   (面试时候)
+        1  使用jsonp,要求服务器是jsonp形式，假如服务器不是jsonp形式，不能用
+        jsonp跨域
+        2 用php偷数据 
+            php中一个函数   file_get_contents(url) 
+
+瀑布流
+     效果见http://huaban.com/search/?q=%E8%B7%91%E8%BD%A6%E6%B5%B7%E6%8A%A5
+     瀑布流布局是一列一列，列宽固定，每一列都是小grid,每一个grid不一样高
+
+     先从布局  
+        思路一 绝对定位
+        思路二 每个grid不一定按照自己序号%3这列插入 看哪列最矮 插在哪里
+
+
+*****************************************************
+
+MDN,开发者文档

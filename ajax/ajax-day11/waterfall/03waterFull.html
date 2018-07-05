@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        body {
+            background-color: #ccc;
+        }
+
+        .waterfall {
+            width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .grid {
+            width: 240px;
+            position: absolute;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 15px;
+        }
+
+        .grid img {
+            width: 240px;
+        }
+
+        .loading {
+            width: 400px;
+            margin: 0 auto;
+            line-height: 30px;
+            background-color: gold;
+            color: white;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="waterfall" id="waterfall">
+        <!--  <div class="grid">
+            <img src="images/0.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/1.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div> -->
+
+    </div>
+    <div class="loading">
+        正在加载....
+    </div>
+    <script type="text/template" id="grid_template">
+        <div class="grid">
+            <img src="<%=imgurl %>" alt="">
+            <p><%=content %></p>
+            <p><%=author %></p>
+        </div>
+    </script>
+    <script src="js/jquery.js"></script>
+    <script src="js/underscore.js"></script>
+    <script>
+        // 得到大盒子
+        var $waterfall = $("#waterfall");
+        // 得到模板字符串
+        var templateStr = $("#grid_template").html();
+
+        //  生成数据绑定函数
+        var compile = _.template(templateStr);
+
+        //用数组存储当前三列的总高度
+        var colHeight = [0, 0, 0];
+
+        var page = 1;
+        getJsonandRender(page);
+        // 请求数据并渲染
+        function getJsonandRender(page) {
+            // 发get请求
+            $.get("json/json" + page + ".txt", function (data) {
+                //console.log(typeof data);
+
+                // data转成json对象
+                var dataObj = JSON.parse(data);
+                // 进行有没有到数据结束判断
+                if(dataObj.news.length===0) {
+                    console.log("没有数据了");
+                    $(".loading").show().html("没有更多的数据");
+                    return;
+                }
+                _.each(dataObj.news, function (dictionary) {
+                    // 谁先加载完毕 处理谁
+                    var image = new Image();
+                    // 一旦设置了src属性 图片就开始加载
+                    image.src = dictionary.imgurl;
+                    $(image).load(function () {
+                        // 
+                        var domStr = compile(dictionary);
+                        var $grid = $(domStr);
+                        $waterfall.append($grid);
+                        // 给grid定位
+                        // 求当前列最短值
+                        var minHeight = _.min(colHeight);
+                        //  找到最短值的列序号
+                        var minIndex = _.indexOf(colHeight, minHeight);
+                        $grid.css({
+                            "top": minHeight,
+                            "left": minIndex * 270
+                        });
+
+                        // 设置当前插入最短列的总高度
+                        colHeight[minIndex] += $grid.outerHeight() + 20;
+
+                        // 给最大的盒子设置高度
+                        $waterfall.css("height",_.max(colHeight));
+
+                        // 隐藏loading
+                        $(".loading").hide();
+                    });
+                });
+                lock = true;
+            });
+        }
+
+        // 给窗口监听滚
+        var lock = true;
+        $(window).scroll(function() {
+             if(!lock) return;
+             // 当滚动到快到底的时候 再次发ajax请求
+             console.log($(window).scrollTop());
+             console.log($(document).height()-$(window).height());
+             var rate = $(window).scrollTop()/($(document).height()-$(window).height());
+             if(rate>=0.75) {
+                 page++;
+                 getJsonandRender(page);
+                 lock = false;
+             }
+        });
+       
+    </script>
+</body>
+
+</html>

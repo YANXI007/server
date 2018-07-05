@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="js/jquery.js"></script>
+    <script>
+        /* //console.log(myajax);
+         myajax.jsonp("jsonp.txt",{},"fun",function(data) {
+           console.log(data);
+        }); */
+
+        $.ajax({
+            "dataType":"jsonp",
+            "url":"jsonp.txt",
+            "jsonpCallback":"fun",
+            "success":function(data) {
+                console.log(data);
+            },
+            "error":function() {
+
+            }
+        });
+       
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        body {
+            background-color: #ccc;
+        }
+
+        .waterfall {
+            width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .grid {
+            width: 240px;
+            position: absolute;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 15px;  
+        }
+
+        .grid img {
+            width: 240px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="waterfall">
+        <div class="grid">
+            <img src="images/0.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/1.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/2.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/3.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/4.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/5.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/6.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/7.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/8.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/9.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/10.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+            <img src="images/11.png" alt="">
+            <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+        </div>
+        <div class="grid">
+                <img src="images/9.png" alt="">
+                <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+            </div>
+            <div class="grid">
+                <img src="images/12.png" alt="">
+                <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+            </div>
+            <div class="grid">
+                <img src="images/11.png" alt="">
+                <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+            </div>
+            <div class="grid">
+                <img src="images/9.png" alt="">
+                <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+            </div>
+            <div class="grid">
+                <img src="images/12.png" alt="">
+                <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+            </div>
+            <div class="grid">
+                <img src="images/11.png" alt="">
+                <p>图片描述图片描述图片描述图片描述图片描述图片描述图片描述图片描述</p>
+            </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="js/underscore.js"></script>
+    <script>
+       // 
+       window.onload = function() {
+          // 思路二  格子看哪列最矮 插入到哪里
+        // 得到所有格子
+        var $grids = $(".grid");
+        //用数组存储当前三列的总高度
+        var colHeight = [0,0,0];
+        /* @ @ @
+        */ 
+
+
+        // 循环遍历每个格子              
+        $grids.each(function() {
+            // 求当前列最短值
+            var minHeight = _.min(colHeight);
+            //alert(minHeight);
+            //  找到最短值的列序号
+            var minIndex = _.indexOf(colHeight,minHeight);
+            $(this).css({
+                "top":minHeight,
+                "left":minIndex*270
+            });
+
+            // 设置当前插入最短列的总高度
+            colHeight[minIndex] += $(this).outerHeight()+20;
+        });
+       } 
+        
+    </script>
+
+</body>
+
+</html>
